@@ -6,28 +6,28 @@ import clock from "../../core/clock";
 import utils from "../../utils";
 
 function App() {
-  const [time, setTime] = useState({ time: config().RUNNING_TIME, total: 0 });
+  const [timer, setTimer] = useState({ time: config().RUNNING_TIME, total: 0 });
   const [isRunning, setIsRunning] = useState(false);
 
   const start = () => {
     setTimeout(() => {
-      const { total } = time;
-      setTime({ time: clock.tick(), total: total + 1 });
+      const { total } = timer;
+      setTimer({ time: clock.tick(), total: total + 1 });
     }, 1000);
   };
 
   useEffect(() => {
     if (isRunning) start();
     else clearTimeout();
-  }, [isRunning, time]);
+  }, [isRunning, timer]);
 
   return (
     <Container isRunning={clock.isRunning} onClick={() => setIsRunning(!isRunning)}>
       <Number>
-        {time.time}
+        {timer.time}
         <Seconds>s</Seconds>
       </Number>
-      <Total>{utils.formatTotal(time.total)}</Total>
+      <Total>{utils.formatTotal(timer.total)}</Total>
       <Subtitle>{clock.isRunning ? text.run.toUpperCase() : text.rest.toUpperCase()}</Subtitle>
     </Container>
   );
