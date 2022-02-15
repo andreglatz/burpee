@@ -4,4 +4,8 @@ function formatTotal(total: number): string {
   return `${minutes}m ${seconds}s`;
 }
 
-export default { formatTotal };
+function isDarkMode() {
+  return Boolean(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+}
+
+export default { formatTotal, isDarkMode };

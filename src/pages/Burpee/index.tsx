@@ -5,7 +5,7 @@ import { Container, Number, Seconds, Subtitle, Total } from "./styles";
 import clock from "../../core/clock";
 import utils from "../../utils";
 
-function App() {
+function Burpee() {
   const [timer, setTimer] = useState({ time: config().RUNNING_TIME, total: 0 });
   const [isRunning, setIsRunning] = useState(false);
 
@@ -33,4 +33,4 @@ function App() {
   );
 }
 
-export default App;
+export default Burpee;
